@@ -6,8 +6,11 @@ require __DIR__.'/../vendor/autoload.php';
 use Neox\FbTop\Main;
 use Symfony\Component\Console\Application;
 
+$defaultCommand = new Main();
+
 $application = new Application('FbTop', '1.0.0');
-$application->add(new Main());
+$application->add($defaultCommand);
+$application->setDefaultCommand($defaultCommand->getName());
 
 try {
     $application->run();
